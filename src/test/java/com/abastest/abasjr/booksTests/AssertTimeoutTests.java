@@ -20,7 +20,14 @@ public class AssertTimeoutTests {
     void timeoutExceeded(){
         assertTimeout(ofMillis(110), () ->
         {
-            Thread.sleep(100);
+            Thread.sleep(100);        // bentuk lambda expression
         });
     }
+
+        // atau bisa juga
+    @Test
+    void timeoutExceededSimple(){
+        assertTimeout(ofMillis(110), () -> Thread.sleep(100)); // bentuk lambda expression
+    }
+
 }
