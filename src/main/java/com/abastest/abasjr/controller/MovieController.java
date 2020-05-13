@@ -1,12 +1,17 @@
 package com.abastest.abasjr.controller;
 
+import java.util.List;
+
 import com.abastest.abasjr.model.MovieModel;
 import com.abastest.abasjr.service.MovieService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 @Controller
@@ -16,7 +21,7 @@ public class MovieController {
     // yaitu digunakan untuk menginjeksi bean dengan tipe Movie service
     private MovieService movieService;
 
-    @RequestMapping("/movie/add")
+    @RequestMapping(value="/movie/add", method = RequestMethod.GET) // harusnya menambah data menggunakan POST
     public String add(@RequestParam(value = "id", required = true) String id, 
                       @RequestParam(value = "title", required = true) String title,
                       @RequestParam(value = "genre", required = true) String genre,
@@ -27,5 +32,21 @@ public class MovieController {
         movieService.addMovie(movie);
         return "add";
     }
+
+    // Tahap 2
+    @RequestMapping("/movie/view") // ketika ditambah RequestMethod.GET maka html thymeleaf akan error
+    public String view(@RequestParam ("id") String id, Model model) {
+        MovieModel lihatMovie = movieService.getMovieDetail(id);
+        model.addAttribute("movie", lihatMovie);
+        return "view_movie";
+    }
+    
+    @RequestMapping(value="/movie/viewall", method=RequestMethod.GET)
+    public String viewAll(Model model) {
+        List<MovieModel> lihatAllMovie = movieService.getMovieList();
+        model.addAttribute("movie", lihatAllMovie);
+        return "viewall_movie";
+    }
+    
     
 }

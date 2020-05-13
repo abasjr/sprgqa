@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:"https://www.thymeleaf.org/">
+
+<head>
+    <title>Lihat Detail Movie</title>
+</head>
+
+<body>
+    <h2>Data Movie</h2>
+    <div th:each="movie : ${movie}">
+        <h3 th:text="${movie.id}"></h3>
+        <h3 th:text="${movie.title}"></h3>
+        <h3 th:text="${movie.genre}"></h3>
+        <h3 th:text="${movie.budget}"></h3>
+        <h3 th:text="${movie.duration}"></h3>
+    </div>
+</body>
+
+</html>
