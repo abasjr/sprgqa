@@ -1,6 +1,7 @@
 package com.abastest.abasjr.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.abastest.abasjr.model.MovieModel;
 import com.abastest.abasjr.service.MovieService;
@@ -8,6 +9,7 @@ import com.abastest.abasjr.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,6 +48,21 @@ public class MovieController {
         List<MovieModel> lihatAllMovie = movieService.getMovieList();
         model.addAttribute("movie", lihatAllMovie);
         return "viewall_movie";
+    }
+    
+    //Latihan 1
+    @RequestMapping(value="/movie/view/{id}", method=RequestMethod.GET)
+    // Using an Optional Parameter Type
+    public String viewById(@PathVariable Optional<String> id, Model model) {
+        if (id.isPresent()) {
+            MovieModel cekMovie = movieService.getMovieDetail(id.get());
+            if (cekMovie != null) {
+                model.addAttribute("movie", cekMovie);
+                return "view_movie";
+            }
+        }
+        model.addAttribute("movie", id.get());
+        return "error";
     }
     
     
