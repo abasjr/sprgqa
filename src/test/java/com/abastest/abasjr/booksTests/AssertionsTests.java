@@ -14,7 +14,7 @@ public class AssertionsTests {
    void groupAssertions(){
        Name myName = new Name("Abas", "Junior");
        assertAll("address", () -> assertEquals("Abas", myName.getFirstName()),
-       () -> assertEquals("unior", myName.getLastName())); // disini disalahkan assert equalsnya
+       () -> assertEquals("Junior", myName.getLastName())); // disini disalahkan assert equalsnya
 
    } 
 }
