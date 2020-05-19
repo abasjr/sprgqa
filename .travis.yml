@@ -2,3 +2,5 @@ language: java
 sudo: true
 jdk: openjdk8
 script: mvn test -B
+before_install:
+  - chmod +x mvnw
