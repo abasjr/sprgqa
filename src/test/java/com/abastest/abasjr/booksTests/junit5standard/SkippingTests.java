@@ -1,4 +1,4 @@
-package com.abastest.abasjr.booksTests;
+package com.abastest.abasjr.booksTests.junit5standard;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
