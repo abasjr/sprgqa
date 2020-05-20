@@ -1,4 +1,4 @@
-package com.abastest.abasjr.booksTests;
+package com.abastest.abasjr.booksTests.junit5standard;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
