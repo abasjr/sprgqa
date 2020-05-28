@@ -50,7 +50,7 @@ public class MovieController {
         return "viewall_movie";
     }
     
-    //Latihan 1
+    //Latihan 3.1
     @RequestMapping(value="/movie/view/{id}", method=RequestMethod.GET)
     // Using an Optional Parameter Type
     public String viewById(@PathVariable Optional<String> id, Model model) {
@@ -63,6 +63,33 @@ public class MovieController {
         }
         model.addAttribute("movie", id.get());
         return "error";
+    }
+
+    //latihan 3.2
+    @RequestMapping(value="/movie/update/{id}/duration/{duration}", method=RequestMethod.GET)
+    public String updateDuration(@PathVariable Optional<String> id, @PathVariable Integer duration, Model model) {
+        if (id.isPresent()){
+            MovieModel movie = movieService.getMovieDetail(id.get());
+            if (movie != null){
+                movie.setDuration(duration);
+                model.addAttribute("movie", movie);
+                return "view_movie";
+            }
+        }
+        return "update_failure";
+    }
+
+    // Latihan 3.3
+    @RequestMapping(value="/movie/delete/{id}", method=RequestMethod.GET)
+    public String deleteMovie(@PathVariable Optional<String> id, Model model) {
+        if (id.isPresent()) {
+            MovieModel movie = movieService.deleteMovie(id.get());
+            if (movie != null) {
+                model.addAttribute("movie", movie);
+                return "deleted";
+            }
+        }
+        return "delete_failure";
     }
     
     

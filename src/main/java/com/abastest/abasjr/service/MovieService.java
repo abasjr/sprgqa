@@ -12,6 +12,6 @@ public interface MovieService { // interface adalah class
 
     MovieModel getMovieDetail(String id);
 
-    
+    MovieModel deleteMovie(String id); // delete movie
     
 }

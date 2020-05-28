@@ -35,5 +35,14 @@ public class InMemoryMovieService implements MovieService {
         }
         return movie;
     }
+
+    @Override
+    public MovieModel deleteMovie(String id) {
+        MovieModel movie = getMovieDetail(id);
+        if (movie != null) {
+            rakMovie.remove(movie);
+        }
+        return movie;
+    }
     
 }
