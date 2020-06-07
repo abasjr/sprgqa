@@ -51,6 +51,13 @@
 			<version>2.2</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Feature 1 JUnit 5 Standard Tests - Rule Migration Support -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-migration-support</artifactId>
+			<version>5.0.0-M4</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
